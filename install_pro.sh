@@ -3,6 +3,21 @@
 #  black-tools PRO — Advanced Linux Server Management Toolkit
 #  Version: 2.0.0-pro
 #  Features: All black-tools + Network/Docker/Cron/tmux/Firewall/SSH-Keys/Installer
+#
+#  ── QUICK INSTALL ──────────────────────────────────────────────────────────
+#
+#  curl:
+#    curl -fsSL https://raw.githubusercontent.com/saeederamy/black-tools/main/install_pro.sh | sudo bash -s -- --install
+#
+#  wget:
+#    wget -qO- https://raw.githubusercontent.com/saeederamy/black-tools/main/install_pro.sh | sudo bash -s -- --install
+#
+#  اگه فایل رو دانلود کردی:
+#    cat install_pro.sh | sudo bash -s -- --install
+#
+#  بعد از نصب، از هر جا اجرا کن:
+#    black-tools-pro
+#
 # ============================================================================
 
 set -o pipefail
@@ -1727,8 +1742,21 @@ case "${1:-}" in
     --uninstall) detect_distro; run_root rm -f "$INSTALL_PATH" && ok "Removed."; exit 0 ;;
     --version|-v) echo "black-tools-pro v$VERSION"; exit 0 ;;
     --help|-h)
-        echo "black-tools PRO v$VERSION"
-        echo "Usage: bash install_pro.sh [--install|--uninstall|--version|--help]"
+        cat <<HELP_EOF
+black-tools PRO v$VERSION — Advanced Linux Server Admin Toolkit
+
+Usage:
+  black-tools-pro              Launch interactive menu (after install)
+  bash install_pro.sh          Run directly without installing
+  bash install_pro.sh --install    Install as /usr/local/bin/black-tools-pro
+  bash install_pro.sh --uninstall  Remove installation
+
+Quick install (one-liner):
+  curl -fsSL https://raw.githubusercontent.com/saeederamy/black-tools/main/install_pro.sh | sudo bash -s -- --install
+
+Or if you have the file:
+  cat install_pro.sh | sudo bash -s -- --install
+HELP_EOF
         exit 0 ;;
 esac
 
