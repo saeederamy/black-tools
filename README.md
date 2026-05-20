@@ -1,40 +1,40 @@
 # Black-Tools
 
-ابزار مدیریت تعاملی سرور لینوکس — بدون نیاز به حفظ کردن دستورات، فقط منو انتخاب کن.
+An interactive, menu-driven Linux server administration toolkit. No need to memorize commands — just pick a number.
 
-دو نسخه:
+Two editions:
 
 | | black-tools | black-tools PRO |
 |---|---|---|
-| فایل | `black-tools.sh` | `install_pro.sh` |
-| دستور | `black-tools` | `black-tools-pro` |
-| تمرکز | ابزارهای پایه | ابزارهای پیشرفته + نصب‌کننده |
+| File | `black-tools.sh` | `install_pro.sh` |
+| Command | `black-tools` | `black-tools-pro` |
+| Focus | Core admin tasks | Advanced tools + software installer |
 
 ---
 
-## ⚡ نصب سریع — black-tools PRO
+## ⚡ Quick Install — black-tools PRO
 
-### روش ۱ — Copy & Paste (بدون نیاز به هیچ چیز)
+### Method 1 — Copy & Paste (no git, no download needed)
 
-لینک زیر رو باز کن، همه محتوا رو کپی کن (`Ctrl+A` → `Ctrl+C`)، داخل ترمینال paste کن و Enter بزن:
+Open the raw link below, select all (`Ctrl+A`), copy (`Ctrl+C`), paste into your terminal and press Enter:
 
 ```
 https://raw.githubusercontent.com/saeederamy/black-tools/main/install-pro.sh
 ```
 
-### روش ۲ — با curl
+### Method 2 — curl
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/saeederamy/black-tools/main/install_pro.sh | sudo bash -s -- --install
 ```
 
-### روش ۳ — با wget
+### Method 3 — wget
 
 ```bash
 wget -qO- https://raw.githubusercontent.com/saeederamy/black-tools/main/install_pro.sh | sudo bash -s -- --install
 ```
 
-بعد از نصب، از هر جا اجرا کن:
+After installation, run from anywhere:
 
 ```bash
 black-tools-pro
@@ -42,13 +42,13 @@ black-tools-pro
 
 ---
 
-## ⚡ نصب سریع — black-tools (نسخه پایه)
+## ⚡ Quick Install — black-tools (base edition)
 
 ```bash
 sudo curl -fsSL https://raw.githubusercontent.com/saeederamy/black-tools/main/black-tools.sh -o /usr/local/bin/black-tools && sudo chmod +x /usr/local/bin/black-tools
 ```
 
-بعد از نصب:
+After installation:
 
 ```bash
 black-tools
@@ -56,92 +56,93 @@ black-tools
 
 ---
 
-## ✨ امکانات — black-tools PRO
+## ✨ Features — black-tools PRO
 
-| بخش | توضیح |
+| Section | What's inside |
 |---|---|
-| **مانیتورینگ** | اطلاعات سیستم، پروسس‌ها، htop/top، auto-diagnostics (CPU، RAM، دیسک، سرویس‌های fail شده، OOM، DNS) |
-| **لاگ‌ها** | journalctl، auth log، dmesg، boot log، خطاها، live-follow |
-| **SSH پیشرفته** | تغییر پورت، root login، اضافه کردن کلید، **تولید SSH key** (Ed25519/RSA/ECDSA)، نمایش کلیدها، ssh-copy-id |
-| **کاربران** | لیست، ایجاد، حذف، قفل/آنلاک، تغییر پسورد |
-| **فایروال کامل** | UFW / iptables / nftables / firewalld — باز/بستن پورت، block IP، rate-limit، ذخیره rules |
-| **شبکه پیشرفته** | **IP استاتیک**، اساین IPv4/IPv6، حذف IP، تغییر DNS، **IP Forwarding**، routing |
-| **Cron Manager** | لیست، اضافه (راهنما)، حذف، ویرایش، لاگ‌های cron |
-| **لینک دانلود موقت** | Python HTTP server با timeout خودکار و URL عمومی |
-| **tmux** | مدیریت session‌ها، attach، kill، راهنمای کلیدها |
-| **Docker** | container/image/volume/network، compose، prune، exec |
-| **نصب‌کننده نرم‌افزار** | Nginx، MySQL، MariaDB، PostgreSQL، MongoDB، Redis، Python، Node.js، Docker |
-| **ریپوهای اختصاصی** | 3x-ui (paqctl)، Madmail، StormDNS |
-| **سرویس‌ها** | systemd — start/stop/enable/disable/logs |
-| **دیسک** | مصرف، بزرگ‌ترین فایل‌ها، پاک‌سازی cache و /tmp |
-| **امنیت** | Fail2ban، ورودهای ناموفق، hardening، unattended-upgrades |
-| **تنظیمات** | hostname، timezone، swap |
-| **پکیج‌ها** | update/upgrade، نصب، حذف، جستجو |
-| **بکاپ** | فشرده‌سازی هر دایرکتوری |
+| **Monitoring** | System info, top processes, live htop/top, auto-diagnostics (CPU load, RAM, disk, failed services, OOM kills, DNS, kernel errors) |
+| **Logs** | journalctl, auth log, dmesg, boot log, errors-only, live-follow |
+| **SSH (Advanced)** | Change port, root login toggle, add authorized key, **generate SSH key pair** (Ed25519/RSA/ECDSA), view/remove keys, ssh-copy-id |
+| **Users** | List, create, delete, lock/unlock, change password |
+| **Firewall (Full)** | UFW / iptables / nftables / firewalld — open/close ports, block IPs, rate-limit, save/restore rules, safe defaults |
+| **Advanced Network** | **Static IPv4/IPv6**, assign/remove IPs, change DNS, **IP Forwarding**, routing, network stats |
+| **Cron Manager** | List, add (guided), remove, edit, view cron logs |
+| **Temp Download Link** | Python HTTP server with auto-timeout and public URL |
+| **tmux** | Create/attach/kill sessions, rename, keybindings reference |
+| **Docker** | Containers, images, volumes, networks, Compose up/down/logs, prune, exec into container |
+| **Software Installer** | Nginx, MySQL, MariaDB, PostgreSQL, MongoDB, Redis, Python, Node.js, Docker |
+| **Custom Repos** | 3x-ui (paqctl), Madmail, StormDNS |
+| **Services** | systemd — start, stop, restart, enable, disable, status, logs |
+| **Disk** | Usage, largest files/dirs, cache cleanup, journal vacuum, /tmp cleanup, file search |
+| **Security** | Fail2ban, failed login audit, last logins, unattended-upgrades, key-only SSH |
+| **System Settings** | Hostname, timezone, swap on/off, create swap file |
+| **Packages** | Update/upgrade, install, remove, search — all major package managers |
+| **Backup** | Quick tar.gz of any directory |
 
 ---
 
-## ✨ امکانات — black-tools (نسخه پایه)
+## ✨ Features — black-tools (base edition)
 
-| بخش | توضیح |
+| Section | What's inside |
 |---|---|
-| **مانیتورینگ** | اطلاعات سیستم، پروسس‌ها، htop/top، auto-diagnostics |
-| **SSH** | تغییر پورت، root login، اضافه کردن کلید، غیرفعال کردن password auth |
-| **کاربران** | لیست، ایجاد، حذف، قفل/آنلاک، تغییر پسورد |
-| **فایروال** | UFW / firewalld / iptables — باز/بستن پورت |
-| **پورت‌ها** | لیست listeners، بررسی پورت خاص |
-| **پروسس‌ها** | kill به PID / نام / پورت |
-| **سرویس‌ها** | systemd — کنترل کامل |
-| **دیسک** | مصرف، پاک‌سازی، جستجو |
-| **شبکه** | اینترفیس‌ها، DNS، ping، traceroute |
-| **تنظیمات** | hostname، timezone، DNS، swap |
-| **امنیت** | Fail2ban، auditing، hardening |
-| **پکیج‌ها** | update، نصب، حذف، جستجو |
-| **بکاپ** | tar.gz از هر دایرکتوری |
+| **Monitoring** | System info, top processes, live htop/top, auto-diagnostics |
+| **Logs** | journalctl, auth log, dmesg, boot log, errors-only, live-follow |
+| **SSH** | Change port, root login toggle, add authorized key, disable password auth |
+| **Users** | List, create, delete, lock/unlock, change password |
+| **Firewall** | UFW / firewalld / iptables — open/close ports, enable/disable |
+| **Ports** | List all listeners, inspect a specific port |
+| **Processes** | Kill by PID / name / port |
+| **Services** | Full systemd control |
+| **Disk** | Usage, cleanup, large file search |
+| **Network** | Interfaces, DNS, public IP, ping, traceroute |
+| **Settings** | Hostname, timezone, DNS, swap |
+| **Security** | Fail2ban, auditing, hardening |
+| **Packages** | Update/upgrade, install, remove, search |
+| **Backup** | tar.gz of any directory |
 
 ---
 
-## 🖥️ سیستم‌های پشتیبانی‌شده
+## 🖥️ Supported Distros
 
 Ubuntu · Debian · Mint · Pop!_OS · Kali · CentOS · RHEL · Rocky · AlmaLinux · Fedora · Arch · Manjaro · openSUSE · Alpine
 
-Package manager به صورت خودکار تشخیص داده می‌شه (`apt` / `dnf` / `yum` / `pacman` / `zypper` / `apk`).
+The distro is auto-detected and the right package manager (`apt` / `dnf` / `yum` / `pacman` / `zypper` / `apk`) is used automatically.
 
 ---
 
-## 🛡️ نکات ایمنی
+## 🛡️ Safety Notes
 
-- قبل از هر ویرایش config، یه backup با timestamp ساخته می‌شه
-- تغییرات SSH با `sshd -t` تست می‌شن — اگه خطا داشت، backup بازگردانده می‌شه
-- تمام عملیات‌ها در `/var/log/black-tools-pro.log` لاگ می‌شن
-- اقدامات مخرب قبل از اجرا تأیید می‌خوان
+- Every config edit (especially `sshd_config`) creates a timestamped backup first.
+- SSH changes are validated with `sshd -t` before restarting — if the config is broken, the backup is restored automatically.
+- All actions are logged to `/var/log/black-tools-pro.log` (or `~/.black-tools-pro.log` if `/var/log` is not writable).
+- Destructive actions always ask for `y/N` confirmation before running.
 
 ---
 
-## 🗑️ حذف
+## 🗑️ Uninstall
 
 ```bash
 # PRO
 sudo black-tools-pro --uninstall
 
-# پایه
+# Base
 sudo black-tools --uninstall
 ```
 
 ---
 
-## 📋 پیش‌نیازها
+## 📋 Requirements
 
 - Bash 4+
-- دسترسی sudo یا root
-- ابزارهای استاندارد: `ss`/`netstat`، `systemctl`، package manager
-- اختیاری: `htop`، `curl`، `python3` (برای لینک دانلود موقت)
+- `sudo` access or root
+- Standard utilities: `ss` or `netstat`, `systemctl`, native package manager
+- Optional: `htop`, `curl`, `python3` (required for the temp download link feature)
 
 ---
 
-## ⚠️ سلب مسئولیت
+## ⚠️ Disclaimer
 
-این ابزار تنظیمات سیستم رو تغییر می‌ده. قبل از هر تغییر در SSH، فایروال یا بوت، از دسترسی console اطمینان حاصل کن.
+This tool modifies system configuration. Always ensure you have working console access (KVM / VPS rescue console) before changing SSH, firewall, or boot-related settings. The author is not responsible for misuse.
 
 ---
 
