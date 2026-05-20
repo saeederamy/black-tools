@@ -14,23 +14,27 @@
 
 ## ⚡ نصب سریع — black-tools PRO
 
+### روش ۱ — Copy & Paste (بدون نیاز به هیچ چیز)
+
+لینک زیر رو باز کن، همه محتوا رو کپی کن (`Ctrl+A` → `Ctrl+C`)، داخل ترمینال paste کن و Enter بزن:
+
+```
+https://raw.githubusercontent.com/saeederamy/black-tools/main/install-pro.sh
+```
+
+### روش ۲ — با curl
+
 ```bash
 curl -fsSL https://raw.githubusercontent.com/saeederamy/black-tools/main/install_pro.sh | sudo bash -s -- --install
 ```
 
-یا با wget:
+### روش ۳ — با wget
 
 ```bash
 wget -qO- https://raw.githubusercontent.com/saeederamy/black-tools/main/install_pro.sh | sudo bash -s -- --install
 ```
 
-یا اگه فایل رو دانلود کردی:
-
-```bash
-cat install_pro.sh | sudo bash -s -- --install
-```
-
-بعد از نصب:
+بعد از نصب، از هر جا اجرا کن:
 
 ```bash
 black-tools-pro
