@@ -1,3 +1,4 @@
+cat << 'EOF' | sudo tee /usr/local/bin/black-tools > /dev/null
 #!/usr/bin/env bash
 # ============================================================================
 #  black-tools PRO — Advanced Linux Server Management Toolkit
@@ -1763,3 +1764,6 @@ esac
 detect_distro
 [[ "$DISTRO_FAMILY" == "unknown" ]] && { warn "Unknown distro ($DISTRO). Some features may not work."; sleep 1; }
 main_menu
+EOF
+sudo chmod +x /usr/local/bin/black-tools
+echo "✓ black-tools installed. Run with:  black-tools"
