@@ -1,120 +1,150 @@
 # Black-Tools
 
-Black-Tools is an all-in-one, menu-driven Linux server administration toolkit. It bundles the most common sysadmin tasks — SSH hardening, user management, firewall control, port checks, service control, diagnostics, package updates, backups and more — behind a single interactive menu, so you can run a healthy server without memorizing commands.
+An interactive, menu-driven Linux server administration toolkit. No need to memorize commands — just pick a number.
 
-Works on **Ubuntu, Debian, Mint, Pop!_OS, Kali, CentOS, RHEL, Rocky, AlmaLinux, Fedora, Arch, Manjaro, openSUSE, and Alpine** — the distro is auto-detected and the right package manager (`apt` / `dnf` / `yum` / `pacman` / `zypper` / `apk`) is used automatically.
+Two editions:
 
-## ⚡ One-Click Installation
+| | black-tools | black-tools PRO |
+|---|---|---|
+| File | `black-tools.sh` | `install_pro.sh` |
+| Command | `black-tools` | `black-tools-pro` |
+| Focus | Core admin tasks | Advanced tools + software installer |
 
-Connect to your remote server and paste the following block into the terminal. It writes the entire toolkit into `/usr/local/bin/black-tools` and makes it executable:
+---
 
-```
-cat << 'EOF' | sudo tee /usr/local/bin/black-tools > /dev/null
-#!/usr/bin/env bash
-# ... (paste the full black-tools.sh contents here) ...
-EOF
-sudo chmod +x /usr/local/bin/black-tools
-```
+## ⚡ Quick Install — black-tools PRO
 
-> 💡 The full installer block is in [`install-black-tools.sh`](./install-black-tools.sh) — open it, copy everything, paste into your server's terminal in one go.
+### Method 1 — Copy & Paste (no git, no download needed)
 
-Alternative — one-liner directly from GitHub:
+Open the raw link below, select all (`Ctrl+A`), copy (`Ctrl+C`), paste into your terminal and press Enter:
 
 ```
+https://raw.githubusercontent.com/saeederamy/black-tools/main/install-pro.sh
+```
+
+### Method 2 — curl
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/saeederamy/black-tools/main/install_pro.sh | sudo bash -s -- --install
+```
+
+### Method 3 — wget
+
+```bash
+wget -qO- https://raw.githubusercontent.com/saeederamy/black-tools/main/install_pro.sh | sudo bash -s -- --install
+```
+
+After installation, run from anywhere:
+
+```bash
+black-tools-pro
+```
+
+---
+
+## ⚡ Quick Install — black-tools (base edition)
+
+```bash
 sudo curl -fsSL https://raw.githubusercontent.com/saeederamy/black-tools/main/black-tools.sh -o /usr/local/bin/black-tools && sudo chmod +x /usr/local/bin/black-tools
 ```
 
-## 🛠️ Usage
+After installation:
 
-After installation, run the tool from anywhere in your terminal:
-
-```
+```bash
 black-tools
 ```
 
-You'll get an interactive menu. **Example session:**
+---
 
-```
-   ____  __    ___   ________ __    ______________  ____  __   _____
-  / __ )/ /   /   | / ____/ //_/   /_  __/ __ \ __ \/ __ \/ /  / ___/
- / __  / /   / /| |/ /   / ,<       / / / / / / / / / / / / /   \__ \
-/ /_/ / /___/ ___ / /___/ /| |     / / / /_/ / /_/ / /_/ / /______/ /
-/_____/_____/_/  |_\____/_/ |_|    /_/  \____/\____/\____/_____/____/
-
-  Linux Admin Toolkit v1.0.0
-  Distro: ubuntu | Family: debian | PM: apt | User: root | Host: server01
-────────────────────────────────────────────────────────────
-» MAIN MENU
-────────────────────────────────────────────────────────────
-   1) System info
-   2) Top processes
-   3) Live monitor (htop/top)
-   4) System diagnostics (auto-check)
-   5) View logs
-────────────────────────────────────────────────────────────
-   6) SSH management
-   7) User management (passwd/create/delete)
-   8) Root password recovery guide
-   9) Firewall
-  10) Listening ports
-  ...
-black-tools >
-```
-
-Pick a number, and a focused sub-menu opens. All dangerous actions are confirmed first, all config files are backed up before edits, and every action is logged to `/var/log/black-tools.log`.
-
-## ✨ Features
+## ✨ Features — black-tools PRO
 
 | Section | What's inside |
 |---|---|
-| **Monitoring** | System info, top processes, live `htop`/`top`, **auto-diagnostics** (CPU load, RAM, disk, inodes, failed services, OOM kills, DNS, kernel errors) |
+| **Monitoring** | System info, top processes, live htop/top, auto-diagnostics (CPU load, RAM, disk, failed services, OOM kills, DNS, kernel errors) |
 | **Logs** | journalctl, auth log, dmesg, boot log, errors-only, live-follow |
-| **SSH** | Change port (backup + syntax-test + auto firewall/SELinux update), enable/disable root login, add public keys, disable password auth |
-| **Users** | List, create, delete, lock/unlock, change any user's password, **set/reset root password** |
-| **Root Recovery** | Step-by-step guide for GRUB single-user mode, `systemd.unit=rescue.target`, and VPS rescue-console workflows |
-| **Firewall** | Auto-detects `ufw` / `firewalld` / `iptables` — open / close ports, enable / disable |
-| **Ports** | List all listeners, inspect a specific port (process + firewall rule) |
-| **Processes** | Kill by PID / name / **port** (finds and kills whatever is using a port) / interactive search |
-| **Services** | Full `systemd` control — start, stop, restart, enable, disable, status, logs |
-| **Disk** | Usage, largest directories, largest files, cache cleanup, journal vacuum, `/tmp` cleanup, file search |
+| **SSH (Advanced)** | Change port, root login toggle, add authorized key, **generate SSH key pair** (Ed25519/RSA/ECDSA), view/remove keys, ssh-copy-id |
+| **Users** | List, create, delete, lock/unlock, change password |
+| **Firewall (Full)** | UFW / iptables / nftables / firewalld — open/close ports, block IPs, rate-limit, save/restore rules, safe defaults |
+| **Advanced Network** | **Static IPv4/IPv6**, assign/remove IPs, change DNS, **IP Forwarding**, routing, network stats |
+| **Cron Manager** | List, add (guided), remove, edit, view cron logs |
+| **Temp Download Link** | Python HTTP server with auto-timeout and public URL |
+| **tmux** | Create/attach/kill sessions, rename, keybindings reference |
+| **Docker** | Containers, images, volumes, networks, Compose up/down/logs, prune, exec into container |
+| **Software Installer** | Nginx, MySQL, MariaDB, PostgreSQL, MongoDB, Redis, Python, Node.js, Docker |
+| **Custom Repos** | 3x-ui (paqctl), Madmail, StormDNS |
+| **Services** | systemd — start, stop, restart, enable, disable, status, logs |
+| **Disk** | Usage, largest files/dirs, cache cleanup, journal vacuum, /tmp cleanup, file search |
+| **Security** | Fail2ban, failed login audit, last logins, unattended-upgrades, key-only SSH |
+| **System Settings** | Hostname, timezone, swap on/off, create swap file |
+| **Packages** | Update/upgrade, install, remove, search — all major package managers |
+| **Backup** | Quick tar.gz of any directory |
+
+---
+
+## ✨ Features — black-tools (base edition)
+
+| Section | What's inside |
+|---|---|
+| **Monitoring** | System info, top processes, live htop/top, auto-diagnostics |
+| **Logs** | journalctl, auth log, dmesg, boot log, errors-only, live-follow |
+| **SSH** | Change port, root login toggle, add authorized key, disable password auth |
+| **Users** | List, create, delete, lock/unlock, change password |
+| **Firewall** | UFW / firewalld / iptables — open/close ports, enable/disable |
+| **Ports** | List all listeners, inspect a specific port |
+| **Processes** | Kill by PID / name / port |
+| **Services** | Full systemd control |
+| **Disk** | Usage, cleanup, large file search |
 | **Network** | Interfaces, DNS, public IP, ping, traceroute |
-| **Settings** | Hostname, timezone, DNS servers, swap on/off, create swap file |
-| **Security** | Install Fail2ban, view failed logins, last logins, enable unattended-upgrades, key-only SSH |
-| **Packages** | System update + upgrade, install, remove, search — across all major package managers |
-| **Backups** | Quick `tar.gz` of any directory |
+| **Settings** | Hostname, timezone, DNS, swap |
+| **Security** | Fail2ban, auditing, hardening |
+| **Packages** | Update/upgrade, install, remove, search |
+| **Backup** | tar.gz of any directory |
+
+---
+
+## 🖥️ Supported Distros
+
+Ubuntu · Debian · Mint · Pop!_OS · Kali · CentOS · RHEL · Rocky · AlmaLinux · Fedora · Arch · Manjaro · openSUSE · Alpine
+
+The distro is auto-detected and the right package manager (`apt` / `dnf` / `yum` / `pacman` / `zypper` / `apk`) is used automatically.
+
+---
 
 ## 🛡️ Safety Notes
 
-- Every action that edits a config file (especially `sshd_config`) creates a timestamped backup first.
+- Every config edit (especially `sshd_config`) creates a timestamped backup first.
 - SSH changes are validated with `sshd -t` before restarting — if the config is broken, the backup is restored automatically.
-- All actions are logged to `/var/log/black-tools.log` (or `~/.black-tools.log` if the user can't write to `/var/log`).
-- Destructive actions ask for `y/N` confirmation before running.
+- All actions are logged to `/var/log/black-tools-pro.log` (or `~/.black-tools-pro.log` if `/var/log` is not writable).
+- Destructive actions always ask for `y/N` confirmation before running.
 
-## 🗑️ Uninstallation
+---
 
-To completely remove Black-Tools, run:
+## 🗑️ Uninstall
 
-```
-sudo rm /usr/local/bin/black-tools
-```
+```bash
+# PRO
+sudo black-tools-pro --uninstall
 
-Or from inside the menu, choose `88) Install black-tools globally` → it has an `--uninstall` flag too:
-
-```
+# Base
 sudo black-tools --uninstall
 ```
 
+---
+
 ## 📋 Requirements
 
-- Bash 4+ (default on all supported distros)
-- `sudo` access (or run as root)
-- Standard utilities: `ss` or `netstat`, `systemctl` (for service management), the distro's native package manager
+- Bash 4+
+- `sudo` access or root
+- Standard utilities: `ss` or `netstat`, `systemctl`, native package manager
+- Optional: `htop`, `curl`, `python3` (required for the temp download link feature)
 
-Optional but recommended: `htop`, `curl`, `bc` (auto-installable from inside the menu).
+---
 
 ## ⚠️ Disclaimer
 
-This tool changes system configuration. Always have a backup or a working console access (KVM / VPS rescue console) before making changes to SSH, firewall, or boot-related settings. The author is not responsible for misuse.
+This tool modifies system configuration. Always ensure you have working console access (KVM / VPS rescue console) before changing SSH, firewall, or boot-related settings. The author is not responsible for misuse.
+
+---
 
 ## 📜 License
 

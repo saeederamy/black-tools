@@ -1,4 +1,16 @@
 #!/usr/bin/env bash
+# ══════════════════════════════════════════════════════════════════════════════
+#  black-tools PRO — One-Paste Installer
+#
+#  فقط این فایل رو باز کن، همه رو کپی کن، داخل ترمینال paste کن
+#  هیچ git، هیچ دانلود، هیچ چیزی لازم نیست
+#
+#  Open the raw file → Select All (Ctrl+A) → Copy → Paste in terminal
+#  No git, no download required.
+# ══════════════════════════════════════════════════════════════════════════════
+set -e
+sudo tee /usr/local/bin/black-tools-pro > /dev/null << 'BTP_INSTALL_END'
+#!/usr/bin/env bash
 # ============================================================================
 #  black-tools PRO — Advanced Linux Server Management Toolkit
 #  Version: 2.0.0-pro
@@ -1763,3 +1775,9 @@ esac
 detect_distro
 [[ "$DISTRO_FAMILY" == "unknown" ]] && { warn "Unknown distro ($DISTRO). Some features may not work."; sleep 1; }
 main_menu
+BTP_INSTALL_END
+sudo chmod +x /usr/local/bin/black-tools-pro
+echo ""
+echo "  ✓ black-tools-pro installed successfully!"
+echo "  Run from anywhere: black-tools-pro"
+echo ""
